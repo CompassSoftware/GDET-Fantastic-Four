@@ -1,0 +1,134 @@
+        "name": "graysonfenwick",
+        "date": "2018-11-05T14:41:34Z"
+        "date": "2018-11-05T14:41:34Z"
+      "message": "Merge pull request #31 from JaysGitLab/test\n\nAll done",
+        "name": "steinem23",
+        "date": "2018-11-05T14:30:42Z"
+        "name": "steinem23",
+        "date": "2018-11-05T14:30:42Z"
+      "message": "Added docs to print methods",
+        "name": "graysonfenwick",
+        "date": "2018-11-05T14:15:12Z"
+        "date": "2018-11-05T14:15:12Z"
+      "message": "Merge pull request #30 from JaysGitLab/TestGrayson\n\nfixed makefile",
+        "name": "Grayson Fenwick",
+        "date": "2018-11-05T14:14:46Z"
+        "name": "Grayson Fenwick",
+        "date": "2018-11-05T14:14:46Z"
+      "message": "fixed makefile",
+        "name": "graysonfenwick",
+        "date": "2018-11-05T12:59:44Z"
+        "date": "2018-11-05T12:59:44Z"
+      "message": "Merge pull request #29 from JaysGitLab/TestGrayson\n\nTest grayson",
+        "name": "graysonfenwick",
+        "date": "2018-11-05T12:45:57Z"
+        "date": "2018-11-05T12:45:57Z"
+      "message": "Merge branch 'test' into TestGrayson",
+        "name": "Grayson Fenwick",
+        "date": "2018-11-05T06:01:37Z"
+        "name": "Grayson Fenwick",
+        "date": "2018-11-05T06:01:37Z"
+      "message": "Added all my tests and methods and they all pass",
+        "name": "graysonfenwick",
+        "date": "2018-11-05T02:02:23Z"
+        "date": "2018-11-05T02:02:23Z"
+      "message": "Merge pull request #28 from JaysGitLab/hallb2-patch-1\n\nUpdates getMatrix methods.",
+        "name": "hallb2",
+        "date": "2018-11-02T18:29:30Z"
+        "date": "2018-11-02T18:29:30Z"
+      "message": "Updates getMatrix methods.",
+        "name": "hallb2",
+        "date": "2018-11-02T14:50:21Z"
+        "date": "2018-11-02T14:50:21Z"
+      "message": "Merge pull request #26 from JaysGitLab/tests_Brad\n\nAdd files via upload",
+        "name": "hallb2",
+        "date": "2018-11-02T14:48:39Z"
+        "date": "2018-11-02T14:48:39Z"
+      "message": "Merge branch 'test' into tests_Brad",
+        "name": "Erin Stein",
+        "date": "2018-11-02T13:54:07Z"
+        "date": "2018-11-02T13:54:07Z"
+      "message": "Merge pull request #27 from JaysGitLab/Constructor\n\nConstructor MatrixTest.java has comments",
+        "name": "Erin Stein",
+        "date": "2018-11-02T13:53:20Z"
+        "date": "2018-11-02T13:53:20Z"
+      "message": "Merge branch 'test' into Constructor",
+        "name": "hallb2",
+        "date": "2018-11-02T13:10:37Z"
+        "date": "2018-11-02T13:10:37Z"
+      "message": "Add files via upload\n\nThis involves updated java files for Matrix.java and MatrixTest.java. These files involve the assigned/updated tests for the methods I was assigned.",
+        "name": "Grayson Fenwick",
+        "date": "2018-11-02T04:26:45Z"
+        "name": "Grayson Fenwick",
+        "date": "2018-11-02T04:26:45Z"
+      "message": "Added tests for all methods I need to write",
+        "name": "graysonfenwick",
+        "date": "2018-11-02T02:04:32Z"
+        "date": "2018-11-02T02:04:32Z"
+      "message": "Merge pull request #25 from JaysGitLab/tests_aidan\n\nFinished Instance Tests-Aidan",
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T20:09:06Z"
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T20:09:06Z"
+      "message": "removed swap file",
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T19:42:43Z"
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T19:42:43Z"
+      "message": "cleaned up getMatrix(int i0, int i1, int j0, int j1)",
+        "name": "Aidan O'Brien",
+        "date": "2018-10-30T19:07:31Z"
+        "date": "2018-10-30T19:07:31Z"
+      "message": "Eliminated swp file",
+        "name": "Aidan O'Brien",
+        "date": "2018-10-30T19:07:11Z"
+        "date": "2018-10-30T19:07:11Z"
+      "message": "Eliminated swp file",
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T19:04:07Z"
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T19:04:07Z"
+      "message": "Eliminated commented out code from getMatrix(int, int, int, int)",
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T19:02:19Z"
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T19:02:19Z"
+      "message": "added test for last getMatrix method.",
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T18:48:32Z"
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T18:48:32Z"
+      "message": "added test for timesEquals method",
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T18:44:57Z"
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T18:44:57Z"
+      "message": "added test for minus method",
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T18:29:23Z"
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T18:29:23Z"
+      "message": "corrected getMatrix(int i0, int i1, int j0, int j1)",
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T14:27:16Z"
+        "name": "Obrien  Aidan M",
+        "date": "2018-10-30T14:27:16Z"
+      "message": "Merge branch 'test' of https://github.com/JaysGitLab/cs5666-javatrix-the-fantastic-four into tests_aidan",
+        "name": "Grayson Fenwick",
+        "date": "2018-10-30T01:05:59Z"
+        "name": "Grayson Fenwick",
+        "date": "2018-10-30T01:05:59Z"
+      "message": "added the setMatrix methods",
+        "name": "graysonfenwick",
+        "date": "2018-10-30T00:30:32Z"
+        "date": "2018-10-30T00:30:32Z"
+      "message": "Merge pull request #23 from JaysGitLab/TestGrayson\n\nTest grayson",
+        "name": "Grayson Fenwick",
+        "date": "2018-10-30T00:30:23Z"
+        "name": "Grayson Fenwick",
+        "date": "2018-10-30T00:30:23Z"
+      "message": "Caused some tests to be ignored",
+        "name": "graysonfenwick",
+        "date": "2018-10-30T00:16:46Z"
+        "date": "2018-10-30T00:16:46Z"
+      "message": "Merge pull request #22 from JaysGitLab/test\n\nTest",
