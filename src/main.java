@@ -2,7 +2,7 @@ import java.io.*;
 import java.lang.ProcessBuilder;
 public class main{
     public static void main(String[] args) throws Exception{
-        File file = new File("src/log.txt");
+        //File file = new File("src/log.txt");
         
         
         
