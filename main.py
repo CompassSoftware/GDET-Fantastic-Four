@@ -87,21 +87,18 @@ def main():
         contributors = json.load(f)
     contributors = cleanContributors(contributors)
 
-    # 'contributor_max' helps with formatting table
+    # 'contributor_max'/dash/etc help with formatting table
     contributor_max = 0
     for i in range(0, len(contributors)):
         if len(contributors[i]) > contributor_max:
             contributor_max = len(contributors[i])
 
-    user = " "*((contributor_max - 4) / 2 + 1) + "User" + " "*((contributor_max - 4) / 2 + 1)
-    Date_Time = " "*6 + "Date/Time" + " "*6
-
     dash = "-"*int(sys.argv[1])
-
-    message = " "*((int(sys.argv[1]) - (contributor_max + 48)) / 2 - 1) + "Message" + " "*((int(sys.argv[1]) - (contributor_max + 48)) / 2 - 1)
-
+    user = " "*((contributor_max - 4) // 2 + 1) + "User" + " "*((contributor_max - 4) // 2 + 1)
+    Date_Time = " "*6 + "Date/Time" + " "*6
     ctype = " "*5 + "Type" + " "*5
-
+    message = " "*((int(sys.argv[1]) - (contributor_max + 48)) // 2 - 1) + "Message" + " "*((int(sys.argv[1]) - (contributor_max + 48)) // 2 - 1)
+    
     output = open("log.txt", "w+")
     
     output.write("%s\n" % dash)
