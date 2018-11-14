@@ -1,5 +1,6 @@
 import json
 import sys
+import numpy as np
 
 def stringMetric(s, t):
     output = []
@@ -15,74 +16,122 @@ def stringMetric(s, t):
     else:
         return stringMetric(s.split()[1], t)
 
-# Opening contributors.json, and putting all contributors into a list
-with open('contributors.json') as f:
-    contributor = json.load(f)
-
-contributors = []
-
-contributor_max = 0
-for i in range(0, len(contributor)):
-    contributors.append(contributor[i]['login'])
-    if len(contributor[i]['login']) > contributor_max:
-        contributor_max = len(contributor[i]['login'])
-
-if contributor_max % 2 != 0:
-    contributor_max += 1
-
-user = " "*((contributor_max - 4) / 2) + "User" + " "*((contributor_max - 4) / 2)
-Date_Time = " "*6 + "Date/Time" + " "*6
-
-with open('commits.json') as f:
-    data = json.load(f)
-
-output = open("log.txt", "w+")
-
-dash = "-"*int(sys.argv[1])
-
-message = " "*((int(sys.argv[1]) - (contributor_max + 48)) / 2 - 1) + "Message" + " "*((int(sys.argv[1]) - (contributor_max + 48)) / 2 - 1)
-
-ctype = " "*5 + "Type" + " "*5
-
-output.write("%s\n" % dash)
-
-output.write("| %s |%s|%s|%s\n" % (user, Date_Time, ctype, message))
-
-output.write("%s\n" % dash)
-
-for i in range(0, len(data)):
-    if data[i]['author'] is not None:
-        output.write("| %s " % data[i]['author']['login'] + " "*(contributor_max - len(data[i]['author']['login'])))
+def cleanContributors(contributors):
+    output = []
+    for i in range(0, len(contributors)):
+        output.append(contributors[i]['login'])
+    return output
     
-    elif data[i]['commit']['author']['name'] in contributors:
-        output.write("| %s " % data[i]['commit']['author']['name'] + " "*(contributor_max - len(data[i]['commit']['author']['name'])))
 
-    else:
-        output.write("| %s " % stringMetric(data[i]['commit']['author']['name'], contributors) + " "*(contributor_max - len(stringMetric(data[i]['commit']['author']['name'], contributors))))
-    
-    output.write("| %s" % data[i]['commit']['author']['date'][:10] + " " + data[i]['commit']['author']['date'][11:len(data[i]['commit']['author']['date']) - 1])
-    
-    output.write(" | %s " % "Commit" + " "*5)
-    
-    temp = data[i]['commit']['message'].replace("\n", " ")
+def cleanCommits(contributors, commits):
+    output1 = []
+    output2 = []
+    output3 = []
+    output4 = []
+    for i in range(0, len(commits)):
+        # Clean committers
+        if commits[i]['author'] is not None:
+            output1.append(commits[i]['author']['login'])
+        elif commits[i]['commit']['author']['name'] in contributors:
+            output1.append(commits[i]['commit']['author']['name'])
+        else:
+            output1.append(stringMetric(commits[i]['commit']['author']['name'], contributors))
+        
+        # Clean date/time
+        output2.append(commits[i]['commit']['author']['date'][:10] + " " + commits[i]['commit']['author']['date'][11:len(commits[i]['commit']['author']['date']) - 1])
 
-    length = int(sys.argv[1]) - (contributor_max + 44)
+        # List of string "Commit"
+        output3.append("Commit")
+        
+        # Clean messages
+        output4.append(commits[i]['commit']['message'].replace("\n", " "))
     
-    output.write(" | %s |\n" % (temp[:length] + " "*(length - len(temp[:length]))))
+    return np.vstack((output1, output2, output3, output4))
 
-    while len(temp[:length]) >= length:
-        temp = temp[length:]
-        output.write("| %s |\n" %(" "*(contributor_max + 1) + "|" + " "*21 + "|" + " "*14 + "| " + temp[:length] + " "*(length - len(temp[:length]))))
-        temp = temp[length:]
+def cleanIssues(issues):
+    output1 = []
+    output2 = []
+    output3 = []
+    output4 = []
+    for i in range(0, len(issues)):
+        # Clean committers
+        output1.append(issues[i]["user"]["login"])
 
+        # Clean date/time
+        output2.append(issues[i]["created_at"][:10] + " " + issues[i]["created_at"][11:len(issues[i]["created_at"]) - 1])
+        
+        # List of string "Issue"
+        output3.append("Issue")
+
+        # Clean messages
+        output4.append(issues[i]["title"])
+    
+    return np.vstack((output1, output2, output3, output4))
+
+def cleanPulls(pulls):
+    output1 = []
+    output2 = []
+    output3 = []
+    output4 = []
+    for i in range(0, len(pulls)):
+        output1.append(pulls[i]["user"]["login"]) 
+        output2.append(pulls[i]["created_at"][:10] + " " + pulls[i]["created_at"][11:len(pulls[i]["created_at"]) - 1]) 
+        output3.append("Pull Request")
+        output4.append(pulls[i]["title"] + " " + pulls[i]["body"])
+    
+    return np.vstack((output1, output2, output3, output4))
+
+def main():
+    # Opens contributors.json, extracts contributor attributes, and puts info into 'contributors'
+    with open('contributors.json') as f:
+        contributors = json.load(f)
+    contributors = cleanContributors(contributors)
+
+    # 'contributor_max' helps with formatting table
+    contributor_max = 0
+    for i in range(0, len(contributors)):
+        if len(contributors[i]) > contributor_max:
+            contributor_max = len(contributors[i])
+
+    user = " "*((contributor_max - 4) / 2 + 1) + "User" + " "*((contributor_max - 4) / 2 + 1)
+    Date_Time = " "*6 + "Date/Time" + " "*6
+
+    dash = "-"*int(sys.argv[1])
+
+    message = " "*((int(sys.argv[1]) - (contributor_max + 48)) / 2 - 1) + "Message" + " "*((int(sys.argv[1]) - (contributor_max + 48)) / 2 - 1)
+
+    ctype = " "*5 + "Type" + " "*5
+
+    output = open("log.txt", "w+")
+    
     output.write("%s\n" % dash)
 
-with open('issues.json') as f:
-    issue = json.load(f)
+    output.write("|%s|%s|%s|%s\n" % (user, Date_Time, ctype, message))
+
+    output.write("%s\n" % dash)
     
-for i in range(0, len(issue)):
-    output.write("| %s " % issue[i]["user"]["login"] + " "*(contributor_max - len(issue[i]["user"]["login"])))
-    output.write("| %s" % issue[i]["created_at"][:10] + " " + issue[i]["created_at"][11:len(issue[i]["created_at"]) - 1])
-    output.write(" | %s " % "Issue" + " "*6)
-    output.write(" | %s \n" % issue[i]["title"])
-    output.write("%s\n" % dash) 
+    with open('commits.json') as f:
+        commits = json.load(f)
+
+    with open('issues.json') as f:
+        issues = json.load(f)
+
+    with open('pulls.json') as f:
+        pulls = json.load(f)
+    
+    placeholder = np.concatenate((cleanCommits(contributors, commits), cleanIssues(issues), cleanPulls(pulls)), 1)
+   
+    for i in sorted(range(len(placeholder[1])), key=lambda k: placeholder[1][k], reverse=True):
+        index = int(sys.argv[1]) - (contributor_max + 44)
+        output.write("| %s | %s | %s | %s\n" % (placeholder[:, i][0] + " "*(contributor_max - len(placeholder[:, i][0])), placeholder[:, i][1], placeholder[:, i][2] + " "*(12 - len(placeholder[:, i][2])), placeholder[:, i][3][:index] + " "*(index - len(placeholder[:, i][3][:index])) + " |"))
+        if len(placeholder[:, i][3]) > index:
+            placeholder[:, i][3] = placeholder[:, i][3][index:]
+            while len(placeholder[:, i][3]) > index:
+                output.write("| %s | %s | %s | %s |\n" % (" "*contributor_max, " "*19, " "*12, placeholder[:, i][3][:index]))
+                placeholder[:, i][3] = placeholder[:, i][3][index:]
+            output.write("| %s | %s | %s | %s |\n" % (" "*contributor_max, " "*19, " "*12, placeholder[:, i][3][:index] + " "*(index - len(placeholder[:, i][3][:index]))))
+        output.write("%s\n" % dash)
+
+
+if __name__ == '__main__':
+    main()
