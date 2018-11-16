@@ -116,6 +116,7 @@ def main():
     with open('pulls.json') as f:
         pulls = json.load(f)
     
+    
     placeholder = np.concatenate((cleanCommits(contributors, commits), cleanIssues(issues), cleanPulls(pulls)), 1)
    
     for i in sorted(range(len(placeholder[1])), key=lambda k: placeholder[1][k], reverse=True):

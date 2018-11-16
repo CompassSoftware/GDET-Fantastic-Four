@@ -16,6 +16,6 @@ pulls="https://api.github.com/repos/$repo/pulls?state=all"
 
 curl -u $usrname:$pssword $contributors -o contributors.json $commits -o commits.json $issues -o issues.json $pulls -o pulls.json --progress-bar
 
-python3.6 main.py $(tput cols)
+python3 main.py $(tput cols)
 
 cat log.txt
