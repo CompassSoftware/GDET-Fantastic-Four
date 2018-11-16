@@ -44,7 +44,7 @@ def cleanCommits(contributors, commits):
         output3.append("Commit")
         
         # Clean messages
-        output4.append(commits[i]['commit']['message'].replace("\n", " "))
+        output4.append(commits[i]['commit']['message'].replace('\r', '').replace('\n', ''))
     
     return np.vstack((output1, output2, output3, output4))
 
@@ -64,7 +64,7 @@ def cleanIssues(issues):
         output3.append("Issue")
 
         # Clean messages
-        output4.append(issues[i]["title"])
+        output4.append(issues[i]["title"].replace('\n', '').replace('\r', ''))
     
     return np.vstack((output1, output2, output3, output4))
 
@@ -77,7 +77,7 @@ def cleanPulls(pulls):
         output1.append(pulls[i]["user"]["login"]) 
         output2.append(pulls[i]["created_at"][:10] + " " + pulls[i]["created_at"][11:len(pulls[i]["created_at"]) - 1]) 
         output3.append("Pull Request")
-        output4.append(pulls[i]["title"] + " " + pulls[i]["body"])
+        output4.append((pulls[i]["title"] + " " + pulls[i]["body"]).replace('\n', '').replace('\r', ''))
     
     return np.vstack((output1, output2, output3, output4))
 
