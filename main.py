@@ -1,7 +1,7 @@
 import json
 import sys
 import numpy as np
-
+from collections import Counter
 def stringMetric(s, t):
     output = []
     for i in range(0, len(t)):
@@ -116,9 +116,11 @@ def main():
     with open('pulls.json') as f:
         pulls = json.load(f)
     
+    #c = Counter(commits)
     
+    #print ('{%s} commits: {%d}'.format("fenwick",commits["fenwick"]))
+    #print(commits[1])
     placeholder = np.concatenate((cleanCommits(contributors, commits), cleanIssues(issues), cleanPulls(pulls)), 1)
-   
     for i in sorted(range(len(placeholder[1])), key=lambda k: placeholder[1][k], reverse=True):
         index = int(sys.argv[1]) - (contributor_max + 44)
         output.write("| %s | %s | %s | %s\n" % (placeholder[:, i][0] + " "*(contributor_max - len(placeholder[:, i][0])), placeholder[:, i][1], placeholder[:, i][2] + " "*(12 - len(placeholder[:, i][2])), placeholder[:, i][3][:index] + " "*(index - len(placeholder[:, i][3][:index])) + " |"))
@@ -127,6 +129,7 @@ def main():
             while len(placeholder[:, i][3]) > index:
                 output.write("| %s | %s | %s | %s |\n" % (" "*contributor_max, " "*19, " "*12, placeholder[:, i][3][:index]))
                 placeholder[:, i][3] = placeholder[:, i][3][index:]
+            
             output.write("| %s | %s | %s | %s |\n" % (" "*contributor_max, " "*19, " "*12, placeholder[:, i][3][:index] + " "*(index - len(placeholder[:, i][3][:index]))))
         output.write("%s\n" % dash)
 
