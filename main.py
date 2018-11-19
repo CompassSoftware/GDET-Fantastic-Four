@@ -95,7 +95,7 @@ def main():
             contributor_max = len(contributors[i])
 
     # 'header' will be the header for all sprint cycles 
-    dash = "-"*(int(sys.argv[2]) + 1)
+    dash = "-"*int(sys.argv[2])
     user = " "*((contributor_max - 4) // 2 + 1) + "User" + " "*((contributor_max - 4) // 2 + 1)
     if contributor_max % 2 == 0:
         user += " "
@@ -159,12 +159,12 @@ def main():
 
     #print(x + timedelta(days=int(sprint_cycle)))
 
-    dash_report = "-"*(int(sys.argv[2]) - 86)
+    dash_report = "-"*(int(sys.argv[2]) - 112)
 
     sprints = np.array([])
 
     while orig <= fin:
-        next_date = orig + timedelta(days=int(sprint_cycle - 1))
+        next_date = orig + timedelta(days=int(sprint_cycle) - 1)
         if len(sprints) == 0:
             sprints = [np.array([orig.strftime("%x"), next_date.strftime("%x")])]
         else:
@@ -206,13 +206,14 @@ def main():
     output.write("%s\n" % contributors)
     
     for i in range(0, len(data)):
-        index = int(sys.argv[2]) - (contributor_max + 44)
+        index = int(sys.argv[2]) - (contributor_max + 45)
         output.write("| %s | %s | %s | %s |\n" % (data[i][0] + " "*(contributor_max + 1 - len(data[i][0])), data[i][1], data[i][2] + " "*(12 - len(data[i][2])), data[i][3][:index] + " "*(index - len(data[i][3][:index]))))
         if len(data[i][3]) > index:
             data[i][3] = data[i][3][index:]
             while len(data[i][3]) > index:
                 output.write("| %s | %s | %s | %s |\n" % (" "*(contributor_max + 1), " "*19, " "*12, data[i][3][:index] + " "*(index - len(data[i][3][:index]))))
                 data[i][3] = data[i][3][index:]
+            output.write("|%s|%s|%s| %s |\n" % (" "*(contributor_max + 3), " "*21, " "*14,  data[i][3] + " "*(index - len(data[i][3]))))
         output.write("%s\n" % dash)
 
 if __name__ == '__main__':
