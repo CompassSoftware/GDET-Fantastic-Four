@@ -1,0 +1,23 @@
+[
+  {
+    "login": "fenwickjb",
+    "id": 5472569,
+    "node_id": "MDQ6VXNlcjU0NzI1Njk=",
+    "avatar_url": "https://avatars0.githubusercontent.com/u/5472569?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/fenwickjb",
+    "html_url": "https://github.com/fenwickjb",
+    "followers_url": "https://api.github.com/users/fenwickjb/followers",
+    "following_url": "https://api.github.com/users/fenwickjb/following{/other_user}",
+    "gists_url": "https://api.github.com/users/fenwickjb/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/fenwickjb/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/fenwickjb/subscriptions",
+    "organizations_url": "https://api.github.com/users/fenwickjb/orgs",
+    "repos_url": "https://api.github.com/users/fenwickjb/repos",
+    "events_url": "https://api.github.com/users/fenwickjb/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/fenwickjb/received_events",
+    "type": "User",
+    "site_admin": false,
+    "contributions": 1
+  }
+]

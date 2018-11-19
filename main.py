@@ -116,10 +116,6 @@ def main():
     with open('pulls.json') as f:
         pulls = json.load(f)
     
-    #c = Counter(commits)
-    
-    #print ('{%s} commits: {%d}'.format("fenwick",commits["fenwick"]))
-    #print(commits[1])
     placeholder = np.concatenate((cleanCommits(contributors, commits), cleanIssues(issues), cleanPulls(pulls)), 1)
     for i in sorted(range(len(placeholder[1])), key=lambda k: placeholder[1][k], reverse=True):
         index = int(sys.argv[1]) - (contributor_max + 44)
@@ -131,8 +127,8 @@ def main():
                 placeholder[:, i][3] = placeholder[:, i][3][index:]
             
             output.write("| %s | %s | %s | %s |\n" % (" "*contributor_max, " "*19, " "*12, placeholder[:, i][3][:index] + " "*(index - len(placeholder[:, i][3][:index]))))
-        output.write("%s\n" % dash)
-
-
+        output.write("%s\n" % dash)   
+    with open("log.txt","r") as fil:
+        print(fil.read())
 if __name__ == '__main__':
     main()
