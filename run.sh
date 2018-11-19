@@ -34,3 +34,4 @@ curl -u $usrname:$pssword $contributors -o $repo/contributors.json $issues -o $r
 python3.6 main.py $repo $(tput cols)
 
 #cat log.txt
+
