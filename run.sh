@@ -16,7 +16,7 @@ mkdir $repo/commits
 i=1
 while :
 do
-    curl -u $usrname:$pssword "https://api.github.com/repos/$organization/$repo/commits?page=$i&per_page=100" -o $repo/commits/commit$i.json
+    curl -u $usrname:$pssword "https://api.github.com/repos/$organization/$repo/commits?page=$i&per_page=100" >> $repo/commits/commit$i.json
     commit=$repo/commits/commit$i.json
     if !(grep -q "sha" $commit) then
         rm $repo/commits/commit$i.json
@@ -34,4 +34,3 @@ curl -u $usrname:$pssword $contributors -o $repo/contributors.json $issues -o $r
 python3.6 main.py $repo $(tput cols)
 
 #cat log.txt
-
